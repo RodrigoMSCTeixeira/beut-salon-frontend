@@ -1,6 +1,7 @@
-import React, { JSXElementConstructor, ReactElement } from "react";
-import styles from "./layoutDefault.module.css";
+import React from "react";
+import Header from "../Header";
 import Container from "../Container";
+import Footer from "../Footer";
 
 interface ILayoutDefaultProps {
   children: React.ReactElement;
@@ -9,11 +10,13 @@ interface ILayoutDefaultProps {
 export default function LayoutDefault({ children }: ILayoutDefaultProps) {
   return (
     <>
+      <Header />
       <main>
         <section>
           <Container>{children}</Container>
         </section>
       </main>
+      <Footer />
     </>
   );
 }

@@ -1,14 +1,22 @@
-import React, { ReactElement } from "react";
-import styles from "./Container.module.css";
+import { ReactNode } from "react";
+import { Box, BoxProps, useTheme } from "@chakra-ui/react";
 
-interface IContainerProps {
-  children: React.ReactElement;
+interface ContainerProps extends BoxProps {
+  children: ReactNode;
 }
 
-export default function Container({ children }: IContainerProps) {
+export default function Container({ children, ...rest }: ContainerProps) {
+  const theme = useTheme();
+
   return (
-    <>
-      <div className={styles.container}>{children}</div>
-    </>
+    <Box
+      width="100%"
+      maxWidth={theme.sizes.container.lg}
+      mx="auto"
+      px={{ base: "4", md: "8" }}
+      {...rest}
+    >
+      {children}
+    </Box>
   );
 }
